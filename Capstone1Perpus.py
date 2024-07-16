@@ -1,24 +1,25 @@
 from tabulate import tabulate
 from datetime import datetime as datt
 
+#change some ID, to make unsorted database, and fixing latestReadDates to be suitable with dd/mm/yyyy format 
 database = [
-{'ID': 'P26K0001', 'username': 'an4',        'PIN': 3822, 'latestReadBook': 'Don Quixote', 'latestReadDate': '20/9/2023',                               'Nama Lengkap': 'Adriana Lucentia', 'Gender': 'P', 'Usia': '28', 'Kota': 'Tangerang Selatan'},
-{'ID': 'P26K0002', 'username': 'beb3',       'PIN': 9258, 'latestReadBook': "Alice's Adventures in Wonderland", 'latestReadDate': '29/2/2024',          'Nama Lengkap': 'Abe Bimantyo', 'Gender': 'L', 'Usia': '21', 'Kota': 'Jakarta Pusat'},
-{'ID': 'P26K0003', 'username': 'cac6sar',    'PIN': 2942, 'latestReadBook': 'The Adventures of Huckleberry Finn', 'latestReadDate': '21/2/2024',        'Nama Lengkap': 'Kartika Sari', 'Gender': 'P', 'Usia': '35', 'Kota': 'Jakarta Pusat'},
-{'ID': 'P26K0004', 'username': 'dov1don',    'PIN': 1923, 'latestReadBook': 'Moby Dick', 'latestReadDate': '1/1/2024',                                  'Nama Lengkap': 'London Vicky', 'Gender': 'L', 'Usia': '20', 'Kota': 'Jakarta Utara'},
-{'ID': 'P26K0005', 'username': 'ek4man',     'PIN': 5496, 'latestReadBook': '	Jane Eyre', 'latestReadDate': '18/3/2024',                                'Nama Lengkap': 'Ekky Kartika Baman', 'Gender': 'L', 'Usia': '22', 'Kota': 'Bekasi'},
-{'ID': 'P26K0006', 'username': 'f4ny5',      'PIN': 4849, 'latestReadBook': "The Pilgrim's Progress", 'latestReadDate': '13/1/2024',                    'Nama Lengkap': 'Stefany Aurelia', 'Gender': 'P', 'Usia': '24', 'Kota': 'Jakarta'},
-{'ID': 'P26K0007', 'username': 'g3rald0',    'PIN': 4253, 'latestReadBook': 'The Hobbit, or, There and Back Again', 'latestReadDate': '1/1/2024',       'Nama Lengkap': 'Geraldo Sutomo', 'Gender': 'L', 'Usia': '21', 'Kota': 'Tangerang'},
-{'ID': 'P26K0008', 'username': 'hum4n',      'PIN': 9558, 'latestReadBook': 'The Three Musketeers', 'latestReadDate': '14/6/2024',                      'Nama Lengkap': 'Humaira Nur', 'Gender': 'P', 'Usia': '19', 'Kota': 'Bekasi'},
-{'ID': 'P26K0009', 'username': '1mban9',     'PIN': 5851, 'latestReadBook': "Alice's Adventures in Wonderland", 'latestReadDate': '10/5/2024',          'Nama Lengkap': 'Imbang Firman Yasin', 'Gender': 'L', 'Usia': '25', 'Kota': 'Bekasi'},
-{'ID': 'P26K0010', 'username': 'h4l1m6c',    'PIN': 8904, 'latestReadBook': "Harry Potter and the Sorcerer's Stone", 'latestReadDate': '25/1/2024',     'Nama Lengkap': 'Halim Ilyas', 'Gender': 'L', 'Usia': '22', 'Kota': 'Depok'},
-{'ID': 'P26K0011', 'username': 'r4ml4hg',    'PIN': 8793, 'latestReadBook': 'Harry Potter and the Goblet of Fire', 'latestReadDate': '30/6/2024',       'Nama Lengkap': 'Ramlah Puspitasari', 'Gender': 'P', 'Usia': '37', 'Kota': 'Jakarta Timur'},
-{'ID': 'P26K0012', 'username': 'p7j1x2',     'PIN': 9431, 'latestReadBook': 'Harry Potter and the Prisoner of Azkaban', 'latestReadDate': '13/1/2024',  'Nama Lengkap': 'Pu1ji Idris', 'Gender': 'L', 'Usia': '18', 'Kota': 'Jakarta Timur'},
-{'ID': 'P26K0013', 'username': 'k4rt1nixld', 'PIN': 2784, 'latestReadBook': '	Eragon', 'latestReadDate': '21/4/2024',                                   'Nama Lengkap': 'Kartini Suhendri', 'Gender': 'P', 'Usia': '18', 'Kota': 'Depok'},
-{'ID': 'P26K0014', 'username': 'm4r1anihy5', 'PIN': 9788, 'latestReadBook': 'The Three Musketeers', 'latestReadDate': '25/1/2024',                      'Nama Lengkap': 'Mariani Haryadi', 'Gender': 'P', 'Usia': '24', 'Kota': 'Bekasi'},
-{'ID': 'P26K0015', 'username': '7sw4tundcb', 'PIN': 9831, 'latestReadBook': '	Black Beauty', 'latestReadDate': '16/1/2024',                             'Nama Lengkap': 'Uswatun Kurniati', 'Gender': 'P', 'Usia': '34', 'Kota': 'Jakarta Selatan'},
-{'ID': 'P26K0016', 'username': 'w4r7wuy',    'PIN': 4925, 'latestReadBook': 'Peter Pan', 'latestReadDate': '16/7/2024',                                 'Nama Lengkap': 'Ernawati Waruwu', 'Gender': 'P', 'Usia': '35', 'Kota': 'Tangerang'},
-{'ID': 'P26K0017', 'username': 'j4ns3nrqr',  'PIN': 1691, 'latestReadBook': 'Black Swan', 'latestReadDate': '15/9/2023',                                'Nama Lengkap': 'Jansen Setiadi', 'Gender': 'L', 'Usia': '19', 'Kota': 'Depok'}
+{'ID': 'P26K0001', 'username': 'an4',        'PIN': 3822, 'latestReadBook': 'Don Quixote', 'latestReadDate': '20/09/2023',                               'Nama Lengkap': 'Adriana Lucentia', 'Gender': 'P', 'Usia': '28', 'Kota': 'Tangerang Selatan'},
+{'ID': 'P26K0002', 'username': 'beb3',       'PIN': 9258, 'latestReadBook': "Alice's Adventures in Wonderland", 'latestReadDate': '29/02/2024',          'Nama Lengkap': 'Abe Bimantyo', 'Gender': 'L', 'Usia': '21', 'Kota': 'Jakarta Pusat'},
+{'ID': 'P26K0003', 'username': 'cac6sar',    'PIN': 2942, 'latestReadBook': 'The Adventures of Huckleberry Finn', 'latestReadDate': '21/02/2024',        'Nama Lengkap': 'Kartika Sari', 'Gender': 'P', 'Usia': '35', 'Kota': 'Jakarta Pusat'},
+{'ID': 'P26K0004', 'username': 'dov1don',    'PIN': 1923, 'latestReadBook': 'Moby Dick', 'latestReadDate': '01/01/2024',                                  'Nama Lengkap': 'London Vicky', 'Gender': 'L', 'Usia': '20', 'Kota': 'Jakarta Utara'},
+{'ID': 'P26K0005', 'username': 'ek4man',     'PIN': 5496, 'latestReadBook': '	Jane Eyre', 'latestReadDate': '18/03/2024',                                'Nama Lengkap': 'Ekky Kartika Baman', 'Gender': 'L', 'Usia': '22', 'Kota': 'Bekasi'},
+{'ID': 'P26K0006', 'username': 'f4ny5',      'PIN': 4849, 'latestReadBook': "The Pilgrim's Progress", 'latestReadDate': '13/01/2024',                    'Nama Lengkap': 'Stefany Aurelia', 'Gender': 'P', 'Usia': '24', 'Kota': 'Jakarta'},
+{'ID': 'P26K0007', 'username': 'g3rald0',    'PIN': 4253, 'latestReadBook': 'The Hobbit, or, There and Back Again', 'latestReadDate': '01/01/2024',       'Nama Lengkap': 'Geraldo Sutomo', 'Gender': 'L', 'Usia': '21', 'Kota': 'Tangerang'},
+{'ID': 'P26K0208', 'username': 'hum4n',      'PIN': 9558, 'latestReadBook': 'The Three Musketeers', 'latestReadDate': '14/06/2024',                      'Nama Lengkap': 'Humaira Nur', 'Gender': 'P', 'Usia': '19', 'Kota': 'Bekasi'},
+{'ID': 'P26K0009', 'username': '1mban9',     'PIN': 5851, 'latestReadBook': "Alice's Adventures in Wonderland", 'latestReadDate': '10/05/2024',          'Nama Lengkap': 'Imbang Firman Yasin', 'Gender': 'L', 'Usia': '25', 'Kota': 'Bekasi'},
+{'ID': 'P26K0010', 'username': 'h4l1m6c',    'PIN': 8904, 'latestReadBook': "Harry Potter and the Sorcerer's Stone", 'latestReadDate': '25/01/2024',     'Nama Lengkap': 'Halim Ilyas', 'Gender': 'L', 'Usia': '22', 'Kota': 'Depok'},
+{'ID': 'P26K0011', 'username': 'r4ml4hg',    'PIN': 8793, 'latestReadBook': 'Harry Potter and the Goblet of Fire', 'latestReadDate': '30/06/2024',       'Nama Lengkap': 'Ramlah Puspitasari', 'Gender': 'P', 'Usia': '37', 'Kota': 'Jakarta Timur'},
+{'ID': 'P26K0012', 'username': 'p7j1x2',     'PIN': 9431, 'latestReadBook': 'Harry Potter and the Prisoner of Azkaban', 'latestReadDate': '13/01/2024',  'Nama Lengkap': 'Pu1ji Idris', 'Gender': 'L', 'Usia': '18', 'Kota': 'Jakarta Timur'},
+{'ID': 'P26K0013', 'username': 'k4rt1nixld', 'PIN': 2784, 'latestReadBook': '	Eragon', 'latestReadDate': '21/04/2024',                                   'Nama Lengkap': 'Kartini Suhendri', 'Gender': 'P', 'Usia': '18', 'Kota': 'Depok'},
+{'ID': 'P26K0014', 'username': 'm4r1anihy5', 'PIN': 9788, 'latestReadBook': 'The Three Musketeers', 'latestReadDate': '25/01/2024',                      'Nama Lengkap': 'Mariani Haryadi', 'Gender': 'P', 'Usia': '24', 'Kota': 'Bekasi'},
+{'ID': 'P26K0015', 'username': '7sw4tundcb', 'PIN': 9831, 'latestReadBook': '	Black Beauty', 'latestReadDate': '16/01/2024',                             'Nama Lengkap': 'Uswatun Kurniati', 'Gender': 'P', 'Usia': '34', 'Kota': 'Jakarta Selatan'},
+{'ID': 'P26K0406', 'username': 'w4r7wuy',    'PIN': 4925, 'latestReadBook': 'Peter Pan', 'latestReadDate': '16/07/2024',                                 'Nama Lengkap': 'Ernawati Waruwu', 'Gender': 'P', 'Usia': '35', 'Kota': 'Tangerang'},
+{'ID': 'P26K0017', 'username': 'j4ns3nrqr',  'PIN': 1691, 'latestReadBook': 'Black Swan', 'latestReadDate': '15/09/2023',                                'Nama Lengkap': 'Jansen Setiadi', 'Gender': 'L', 'Usia': '19', 'Kota': 'Depok'}
 ]
 
 ### VALIDATION FUNCTION START FROM HERE ###
@@ -107,7 +108,8 @@ def checkgender(gender):
 
 ### FUNCTIONS OF PROGRAM START HERE ###
 def check(w):
-    print(tabulate(w, headers = 'keys', tablefmt = 'pretty'))
+    sorted_data = sorted(w, key=lambda x: x['ID'][-4:]) # sorted based on last four digit of ID
+    print(tabulate(sorted_data, headers = 'keys', tablefmt = 'pretty'))
   
 def new():
   id = DigC('Masukkan ID: ')
@@ -200,44 +202,44 @@ def remove_data():
     check(database)
 
 def filter_data():
-  while True:
-    filter_choice = input("Filter berdasarkan (ID/Nama/Gender/Usia/Kota/Book/Date): ").lower()
-    if filter_choice not in ['id', 'nama', 'gender', 'usia', 'kota', 'book', 'date']:
-      print("Pilihan filter tidak valid. Silakan pilih dari: ID, Nama, Gender, Usia, Kota, Book, Date")
-      continue
-    if filter_choice == 'usia':
-      try:
-        age_range = input("Masukkan rentang usia (misal: 20-30): ")
-        age_min, age_max = map(int, age_range.split('-'))
-      except ValueError:
-        print("Format rentang usia tidak valid. Silakan masukkan dalam format 'min-max'.")
-        continue
-      filtered_data = [entry for entry in database if age_min <= int(entry['Usia']) <= age_max]
-    elif filter_choice == 'nama':
-      filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
-      filtered_data = [entry for entry in database if filter_value in entry['Nama Lengkap']]
-    elif filter_choice == 'Book':
-      filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
-      filtered_data = [entry for entry in database if filter_value in entry['latestReadBook']]
-    elif filter_choice == 'Date':
-      try:
-        date_range = input("Masukkan rentang tanggal (misal: 15/01/2024-12/31/2024): ")
-        date_min, date_max = date_range.split('-')
-        date_min = datt.strptime(date_min, '%d/%m/%Y').date()
-        date_max = datt.strptime(date_max, '%d/%m/%Y').date()
-      except ValueError:
-        print("Format rentang tanggal tidak valid. Silakan masukkan dalam format 'dd/mm/yyyy-dd/mm/yyyy'.")
-        continue
-      filtered_data = [entry for entry in database if date_min <= datt.strptime(entry['latestReadDate'], '%d/%m/%Y').date() <= date_max]
-    else:
-      filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
-      filtered_data = [entry for entry in database if entry[filter_choice.capitalize()] == filter_value]
-    if filtered_data:
-      check(filtered_data)
-    else:
-      print("Tidak ada data yang sesuai dengan filter.")
-    if not more_no('filter'):
-      break
+    while True:
+        filter_choice = input("Filter berdasarkan (ID/Nama/Gender/Usia/Kota/Book/Date): ").lower()
+        if filter_choice not in ['id', 'nama', 'gender', 'usia', 'kota', 'book', 'date']:
+            print("Pilihan filter tidak valid. Silakan pilih dari: ID, Nama, Gender, Usia, Kota, Book, Date")
+            continue
+        if filter_choice == 'usia':
+            try:
+                age_range = input("Masukkan rentang usia (misal: 20-30): ")
+                age_min, age_max = map(int, age_range.split('-'))
+            except ValueError:
+                print("Format rentang usia tidak valid. Silakan masukkan dalam format 'min-max'.")
+                continue
+            filtered_data = [entry for entry in database if age_min <= int(entry['Usia']) <= age_max]
+        elif filter_choice == 'nama':
+            filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
+            filtered_data = [entry for entry in database if filter_value in entry['Nama Lengkap']]
+        elif filter_choice == 'book':
+            filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
+            filtered_data = [entry for entry in database if filter_value in entry['latestReadBook']]
+        elif filter_choice == 'date':
+            try:
+                date_range = input("Masukkan rentang tanggal (misal: 15/01/2024-31/12/2024): ")
+                date_min, date_max = date_range.split('-')
+                date_min = datt.strptime(date_min.strip(), '%d/%m/%Y').date()
+                date_max = datt.strptime(date_max.strip(), '%d/%m/%Y').date()
+            except ValueError:
+                print("Format rentang tanggal tidak valid. Silakan masukkan dalam format 'dd/mm/yyyy-dd/mm/yyyy'.")
+                continue
+            filtered_data = [entry for entry in database if date_min <= datt.strptime(entry['latestReadDate'], '%d/%m/%Y').date() <= date_max]
+        else:
+            filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
+            filtered_data = [entry for entry in database if entry[filter_choice.capitalize()] == filter_value]
+        if filtered_data:
+            check(filtered_data)
+        else:
+            print("Tidak ada data yang sesuai dengan filter.")
+        if not more_no('filter'):
+            break
 
 def main():
    while True:
