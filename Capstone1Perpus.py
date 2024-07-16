@@ -121,7 +121,7 @@ def new():
   book = input('Masukkan Judul Buku: ').title().replace("'S","'s")
   date = input('Masukkan Tanggal Baca (DD/MM/YYYY): ')
   date = checkdate(date)
-  nama = AlpC('Masukkan Nama: ')
+  nama = AlpC('Masukkan Nama: ').title()
   gender = input('Masukkan Jenis Kelamin (P/L): ').title()
   gender = checkgender(gender)
   usia = DigC('Masukkan Usia: ')
