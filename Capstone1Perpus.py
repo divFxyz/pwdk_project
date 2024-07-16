@@ -21,6 +21,7 @@ database = [
 {'ID': 'P26K0017', 'username': 'j4ns3nrqr',  'PIN': 1691, 'latestReadBook': 'Black Swan', 'latestReadDate': '15/9/2023',                                'Nama Lengkap': 'Jansen Setiadi', 'Gender': 'L', 'Usia': '19', 'Kota': 'Depok'}
 ]
 
+### VALIDATION FUNCTION START FROM HERE ###
 def ADC(foo = 'Masukkan Angka/Huruf: '):
   while True:
     wew = input(foo)
@@ -28,7 +29,6 @@ def ADC(foo = 'Masukkan Angka/Huruf: '):
       return str(wew)
     else:
       print(f'Input Invalid.')
-
 
 def DigC(foo = 'Masukkan Angka: '):
   while True:
@@ -46,9 +46,6 @@ def AlpC(foo = 'Masukkan Kata: '):
       else:
         print(f'Input Invalid.')
 
-def check(w):
-    print(tabulate(w, headers = 'keys', tablefmt = 'pretty'))
-
 def checklenid(id):
     while True:
         formatted_id = ''
@@ -64,7 +61,6 @@ def checklenid(id):
             print('ID harus terdiri dari 1-4 digit.')
             id = DigC('Masukkan ID: ')
             continue
-
         if any(entry['ID'] == formatted_id for entry in database):
             print('ID sudah ada!')
             id = DigC('Masukkan ID: ')
@@ -109,8 +105,10 @@ def checkgender(gender):
             print('Jenis Kelamin harus P/L.')
             gender = input('Masukkan Jenis Kelamin (P/L): ')
 
-
 ### FUNCTIONS OF PROGRAM START HERE ###
+def check(w):
+    print(tabulate(w, headers = 'keys', tablefmt = 'pretty'))
+  
 def new():
   id = DigC('Masukkan ID: ')
   id = checklenid(id)
@@ -130,6 +128,7 @@ def new():
   database.append(new_data)
   check(database)
 
+### THIS IS REINPUT FUNCTION ###
 def more_no(foo: str = 'Tambah Data'):
   more = input(f"Apakah Anda ingin melakukan {foo} lagi? (Y/n): ").title()
   if more.lower() in ['ya', 'y', 'yes']:
@@ -186,7 +185,6 @@ def edit():
         if not found:
             print('ID tidak ditemukan!')
         
-          
 def remove_data():
     id_suffix = input('Masukkan 4 Digit ID terakhir yang ingin dihapus: ')
     found = False
@@ -201,15 +199,12 @@ def remove_data():
         print('ID tidak ditemukan!')
     check(database)
 
-
-
 def filter_data():
   while True:
     filter_choice = input("Filter berdasarkan (ID/Nama/Gender/Usia/Kota/Book/Date): ").title()
     if filter_choice not in ['ID', 'Nama', 'Gender', 'Usia', 'Kota', 'Book', 'Date']:
       print("Pilihan filter tidak valid. Silakan pilih dari: ID, Nama, Gender, Usia, Kota, Book, Date")
       continue
-
     if filter_choice == 'Usia':
       try:
         age_range = input("Masukkan rentang usia (misal: 20-30): ")
@@ -218,15 +213,12 @@ def filter_data():
         print("Format rentang usia tidak valid. Silakan masukkan dalam format 'min-max'.")
         continue
       filtered_data = [entry for entry in database if age_min <= int(entry['Usia']) <= age_max]
-
     elif filter_choice == 'Nama':
       filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
       filtered_data = [entry for entry in database if filter_value in entry['Nama Lengkap']]
-
     elif filter_choice == 'Book':
       filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
       filtered_data = [entry for entry in database if filter_value in entry['latestReadBook']]
-
     elif filter_choice == 'Date':
       try:
         date_range = input("Masukkan rentang tanggal (misal: 15/01/2024-12/31/2024): ")
@@ -237,16 +229,13 @@ def filter_data():
         print("Format rentang tanggal tidak valid. Silakan masukkan dalam format 'dd/mm/yyyy-dd/mm/yyyy'.")
         continue
       filtered_data = [entry for entry in database if date_min <= datt.strptime(entry['latestReadDate'], '%d/%m/%Y').date() <= date_max]
-
     else:
       filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
       filtered_data = [entry for entry in database if entry[filter_choice] == filter_value]
-
     if filtered_data:
       check(filtered_data)
     else:
       print("Tidak ada data yang sesuai dengan filter.")
-    
     if not more_no('filter'):
       break
 
