@@ -201,11 +201,11 @@ def remove_data():
 
 def filter_data():
   while True:
-    filter_choice = input("Filter berdasarkan (ID/Nama/Gender/Usia/Kota/Book/Date): ").title()
-    if filter_choice not in ['ID', 'Nama', 'Gender', 'Usia', 'Kota', 'Book', 'Date']:
+    filter_choice = input("Filter berdasarkan (ID/Nama/Gender/Usia/Kota/Book/Date): ").lower()
+    if filter_choice not in ['id', 'nama', 'gender', 'usia', 'kota', 'book', 'date']:
       print("Pilihan filter tidak valid. Silakan pilih dari: ID, Nama, Gender, Usia, Kota, Book, Date")
       continue
-    if filter_choice == 'Usia':
+    if filter_choice == 'usia':
       try:
         age_range = input("Masukkan rentang usia (misal: 20-30): ")
         age_min, age_max = map(int, age_range.split('-'))
@@ -213,7 +213,7 @@ def filter_data():
         print("Format rentang usia tidak valid. Silakan masukkan dalam format 'min-max'.")
         continue
       filtered_data = [entry for entry in database if age_min <= int(entry['Usia']) <= age_max]
-    elif filter_choice == 'Nama':
+    elif filter_choice == 'nama':
       filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
       filtered_data = [entry for entry in database if filter_value in entry['Nama Lengkap']]
     elif filter_choice == 'Book':
@@ -231,7 +231,7 @@ def filter_data():
       filtered_data = [entry for entry in database if date_min <= datt.strptime(entry['latestReadDate'], '%d/%m/%Y').date() <= date_max]
     else:
       filter_value = input(f"Masukkan nilai filter untuk {filter_choice}: ").title()
-      filtered_data = [entry for entry in database if entry[filter_choice] == filter_value]
+      filtered_data = [entry for entry in database if entry[filter_choice.capitalize()] == filter_value]
     if filtered_data:
       check(filtered_data)
     else:
